@@ -9,8 +9,9 @@ import ServiceCard from "../components/ServiceCard";
 import { services } from "../data";
 import { Service } from "../types";
 
-const About: NextPage = () => {
+const About = ({ endpoint }) => {
   // console.log(services);
+  console.log(endpoint);
 
   return (
     <div className="flex flex-col flex-grow px-6 pt-1 ">
@@ -45,14 +46,16 @@ const About: NextPage = () => {
 };
 
 //!called every time  the page refreshed
-// export const getServerSideProps: GetServerSideProps = async (
-//    context: GetServerSidePropsContext
-// ) => {
-//    const res = await fetch('http://localhost:3000/api/services')
-//    const data = await res.json()
-//    console.log(data)
-//    return { props: { services: data.services } }
-// }
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  // console.log(process.env.VERCEL_URL);
+
+  // const res = await fetch(`${process.env.VERCEL_URL}/api/services`);
+  // const data = await res.json();
+  // console.log(data);
+  return { props: { endpoint: process.env.VERCEL_URL } };
+};
 
 //!called only during the build of the project
 //? make sure the server(localhost:3000)[this will receive the request during build] is running on a terminal during the build
