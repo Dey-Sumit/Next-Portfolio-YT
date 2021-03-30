@@ -7,7 +7,8 @@ import {
 } from "next";
 import ServiceCard from "../components/ServiceCard";
 import { services } from "../data";
-import { Service } from "../types";
+
+import Head from "next/head";
 
 const About = ({ endpoint }) => {
   // console.log(services);
@@ -15,6 +16,10 @@ const About = ({ endpoint }) => {
 
   return (
     <div className="flex flex-col flex-grow px-6 pt-1 ">
+      <Head>
+        <title>Web Developer | portfolio | Sumit</title>
+      </Head>
+
       <h6 className="my-3 text-base font-medium">
         I am currently pursuing B.Tech Degree(Final Year) in Computer Science
         Engineering from Academy of Technology. I have 3+ years of experience in
